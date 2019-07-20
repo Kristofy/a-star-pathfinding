@@ -21,6 +21,7 @@ function setup(){
     grid[gridSize-1][gridSize-1].walkable=true;
 
     grid[0][0].gScore=0;
+    grid[0][0].gScore=Cell.d(grid[0][0],target);
     grid[0][0].Open="OPEN"
 
     openSet.push(grid[0][0]);
@@ -61,6 +62,7 @@ function draw(){
         let newGScore = current.gScore + Cell.d(current,n);
         if(newGScore<n.gScore){
             n.gScore=newGScore;
+            n.fScore=n.hScore+n.gScore;
             n.parent=current;
             if(n.Open=="UNDEFINED"){
                 n.Open="OPEN";

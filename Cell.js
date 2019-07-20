@@ -1,8 +1,5 @@
-
 class Cell{
-    get fScore(){
-        return this.hScore+this.gScore;
-    }
+
 
     constructor(i,k,w,walkable, target){
         this.Open="UNDEFINED";
@@ -18,6 +15,7 @@ class Cell{
         }else{
             this.hScore=abs(this.i-target.i)*14+(abs(this.k-target.k)-abs(this.i-target.i))*10;
         }
+        this.fScore=Infinity;
     }
 
     show(){
@@ -41,9 +39,9 @@ class Cell{
     }
 
     static d(a,b){
-        let k=a.i-b.i;
-        let i=a.k-b.k;
-        if(abs(k+i)==2){
+        let i=abs(a.i-b.i);
+        let k=abs(a.k-b.k);
+        if(k+i==1){
             return 10;
         }
         else{
