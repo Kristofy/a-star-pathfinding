@@ -59,7 +59,7 @@ function draw(){
     neighbours = getNeighbours(current.i, current.k);
 
     for(let n of neighbours){
-        let newGScore = current.hScore + Cell.d(current,n);
+        let newGScore = current.gScore + Cell.d(current,n);
         if(newGScore<n.gScore){
             n.gScore=newGScore;
             n.fScore=n.hScore+n.gScore;
